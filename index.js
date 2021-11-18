@@ -1,18 +1,29 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
+// function hasTargetSum(array, target) {
+//   // Write your algorithm here
+//   for(let i = 0; i < array.length-1; i++){
+//     for(let j = i+1; j < array.length; j++){
+//       if(target - array[i] == array[j]){
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+//Basically, I'm looping through the array, and for every element
+// I'm checking with every other element if they add up to the target 
+// value. This way, I'm not wasting time or resources checking combinations
+// that have already been checked before.
+
+//NEW AND IMPROVED:
+function hasTargetSum(array, target){
+  let storedNums = {};
+  for(num of array){
+    if(storedNums[target-num])return true;
+    storedNums[num] = true;
+  }
+  return false;
 }
-
-/* 
-  Write the Big O time complexity of your function here
-*/
-
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
